@@ -64,13 +64,13 @@ class DOMManager{
       $('#app').empty();
       for(let song of songs){
         $('#app').prepend(`
-            <div id="${song.id}" class="card">
-                <div class="card-header">
+            <div id="${song.id}" class="card border-warning">
+                <div class="card-header border-success">
                     <h2>${song.track}</h2>
-                    <button class="btn btn-danger" onclick="DOMManager.deleteSong('${song.id}')">Delete</button>
+                    <button class="btn btn-warning" onclick="DOMManager.deleteSong('${song.id}')">Delete</button>
                 </div>
                 <div class="card-body">
-                    <div class="card">
+                    <div class="card ">
                         <div class="row">
                         <h4>${song.artist}</h4>
                         </div>

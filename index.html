@@ -6,18 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>House App</title>
     <link href="./node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-    <body class="container">
-        <div id="new-song" class="jumbotron">
-            <h2>New song</h2>
+    <body class="container" >
+        <div class="container-fluid">
+            <div class="row">
+                <img class="img w-50 mx-auto" src="pm.png" alt="scan">
+            </div>
+        </div>
+          </div>
+        <div id="new-song" class="jumbotron w-50 mx-auto pb-5">
             track:<input type="text" id="new-song-track" class="form-control" placeholder="track"> <br>
             artist:<input type="text" id="new-song-artist" class="form-control" placeholder="artist"> <br>
             <button id="create-new-song" class="btn btn-primary form-control">Create</button>
         </div>
 
-        <div id="app">
-            
-        </div>
+        <div id="app" class="pt-5 border-top w-50 "> </div>
+        
+        <!-- <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"></div>
+        </div> -->
+
+    </body>
         <script src="./node_modules/jquery/dist/jquery.js"></script>
         <script src="index.js"></script>
 </html>
