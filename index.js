@@ -2,6 +2,15 @@ class Song {
     constructor(track,artist){
         this.track = track;
         this.artist = artist;
+        this.comments =[];     
+    }
+    addComment(area){
+        this.comments.push(new Comment(area));
+    }
+}
+class Comment {
+    constructor(area){
+        this.area = area;
     }
  }
 
@@ -56,7 +65,19 @@ class DOMManager{
         })
         .then((songs) => this.render(songs));
     }
+    static addComment(id){
+        for(let song of this.songs){
+            if(song._id == id){
+                song.comments.push(new Comment($(`#${song._id}-comment-area`).val()));
+                SongService.updateSong(song)
+                .then(() => {
+                    return SongService.getAllSongs();
+                })
+                .then((songs)=> this.render(songs));
 
+            } 
+        }
+    }
 
 
     static render(songs){
@@ -64,24 +85,26 @@ class DOMManager{
       $('#app').empty();
       for(let song of songs){
         $('#app').prepend(`
-            <div id="${song.id}" class="card border-warning">
+            <div id="${song._id}" class="card border-warning">
                 <div class="card-header border-success">
                     <h2>${song.track}</h2>
                     <button class="btn btn-warning" onclick="DOMManager.deleteSong('${song.id}')">Delete</button>
                 </div>
                 <div class="card-body">
                     <div class="card ">
-                        <div class="row">
                         <h4>${song.artist}</h4>
-                        </div>
+                                <input type ="text" id="${song._id}-comment-area" class="form-control mx-auto w-50 my-3" placeholder="Comment">
+                        <button id="(${song._id})-new-comment" onclick="DOMManager.addComment('${song._id}')" class="btn btn-primary form-control my-4 w-25 mx-auto">Add</button>
                     </div>
-                </div>
+
             </div>
-            <br>`
+        </div><br>`
             );
         }
     }
 }
+
+
 $("#create-new-song").click(() => {
     DOMManager.createSong($("#new-song-track").val(),$("#new-song-artist").val());
     $("#new-song-track").val("");

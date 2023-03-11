@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(131, 161, 32));
+    background-color: rgb(255, 255, 255);
   }
 
   .img{
@@ -14,6 +14,10 @@ body{
     
   } 
 
-  .card-body{
-    background-url:;
+
+
+
+  .bold{
+    font-weight: 200;
+    font-size: large;
   }
